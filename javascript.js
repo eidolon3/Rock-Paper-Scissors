@@ -29,6 +29,7 @@ function getHumanChoice() {
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
+    let tieCount = 0;
     round = 0
     playRound()
     playRound()
@@ -40,7 +41,7 @@ function playGame() {
     playRound()
     playRound()
     playRound()
-    console.log(`Human Score: ${humanScore}. Computer Score: ${computerScore}`)
+    console.log(`Human Score: ${humanScore}. Computer Score: ${computerScore}, Ties: ${tieCount}`)
     function playRound() {
         round +=1
         console.log(`Round: ${round}`)
@@ -48,9 +49,10 @@ function playGame() {
         let humanChoice = getHumanChoice()
         humanChoice = humanChoice.toLowerCase();
         computerChoice = computerChoice.toLowerCase();
-
+        console.log(`Two choices. ${humanChoice} and ${computerChoice}`)
         if (humanChoice == computerChoice) {
             console.log(`Tie! Both players played ${humanChoice}`);
+            tieCount += 1;
         
         }
         else if (humanChoice == "rock" && computerChoice == "paper") {
@@ -76,10 +78,10 @@ function playGame() {
         else if (humanChoice == "scissors" && computerChoice == "rock") {
             console.log("You Lose, Rock Beats Scissors!");
             computerScore += 1
-
+        }
         else if (humanChoice == "scissors" && computerChoice == "paper") {
-            console.log("You Win! Scissors beats paper!");
-            humanScore += 1
+            console.log("You Win, Scissors beats Paper!");
+            computerScore += 1
         }
 
 
