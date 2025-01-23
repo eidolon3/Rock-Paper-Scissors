@@ -1,94 +1,76 @@
+let results = document.querySelector("#results")
 
+function computerGo() {
+    let choice;
+    let value = Math.random()
+    if (value < 0.33) {
+        choice = "rock"
 
-console.log("Hello World")
-
-function getComputerChoice() {
-    let number = Math.random();
-    if (number >= 0.667) {
-        return "Rock";
     }
-    else if (number >= 0.33) {
-        return "Paper";
-    }
-    else {
-        return "Scissors";
+    else if (value < 0.67) {
+        choice = "paper"
     }
 
+    else if (value < 1) {
+        choice = "scissors"
+    }
+
+    return choice
 }
-
-
-
-function getHumanChoice() {
-    let result = prompt("Pick: Rock, Paper, or Scissors?: ", "");
-    return result;
-}
-
-
-
 
 function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-    let tieCount = 0;
-    round = 0
-    playRound()
-    playRound()
-    playRound()
-    playRound()
-    playRound()
-    playRound()
-    playRound()
-    playRound()
-    playRound()
-    playRound()
-    console.log(`Human Score: ${humanScore}. Computer Score: ${computerScore}, Ties: ${tieCount}`)
-    function playRound() {
-        round +=1
-        console.log(`Round: ${round}`)
-        let computerChoice = getComputerChoice()
-        let humanChoice = getHumanChoice()
-        humanChoice = humanChoice.toLowerCase();
-        computerChoice = computerChoice.toLowerCase();
-        console.log(`Two choices. ${humanChoice} and ${computerChoice}`)
-        if (humanChoice == computerChoice) {
-            console.log(`Tie! Both players played ${humanChoice}`);
-            tieCount += 1;
-        
-        }
-        else if (humanChoice == "rock" && computerChoice == "paper") {
-            console.log("You lose! Paper beats Rock!");
-            computerScore +=1
-        }
+    let humanScore = 0
+    let computerScore = 0
+    let tieScore = 0 
+    let round = 0
 
-        else if (humanChoice == "paper" && computerChoice == "rock") {
-            console.log("You win! Paper beats Rock");
-            humanScore += 1
-        }
+    let rock = document.querySelector("#rock");
+    rock.addEventListener("click", ()=> playRound("rock"));
 
-        else if (humanChoice == "paper" && computerChoice == "scissors") {
-            console.log("You lose! Paper beats Scissors!");
-            computerScore += 1
-        }
+    let scissors = document.querySelector("#scissors");
+    scissors.addEventListener("click", ()=> playRound("scissors"));
 
-        else if (humanChoice == "rock" && computerChoice == "scissors") {
-            console.log("You Win! Rock beats Scissors!");
-            humanScore += 1
-        }
-
-        else if (humanChoice == "scissors" && computerChoice == "rock") {
-            console.log("You Lose, Rock Beats Scissors!");
-            computerScore += 1
-        }
-        else if (humanChoice == "scissors" && computerChoice == "paper") {
-            console.log("You Win, Scissors beats Paper!");
-            computerScore += 1
-        }
+    let paper = document.querySelector("#paper");
+    paper.addEventListener("click", ()=> playRound("paper"));
 
 
 
-        
+
+
+
+
+    function playRound(humanChoice) {
+    let computerChoice = computerGo()
+
+    let choices = document.createElement("div")
+    choices.textContent = `Player chose ${humanChoice}, Computer chose ${computerChoice}`
+
+    let score = document.createElement("div")
+    
+    let result = document.createElement("div");
+
+    if (humanChoice == computerChoice) {
+        tieScore += 1
+        result.textContent = `It's a tie! Both players chose ${humanChoice} `
     }
 
-}
+    else if (
+        (humanChoice === "rock" && computerChoice === "paper") ||
+        (humanChoice === "paper" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "rock")
+    ) {
+        result.textContent = `You lose! ${computerChoice} beats ${humanChoice}!`;
+        computerScore += 1;
+    }
+    else {result.textContent = `You win! ${humanChoice} beats ${computerChoice}!`;
+    humanScore += 1;}
 
+    round += 1
+    score.textContent = `Human: ${humanScore} Computer: ${computerScore} Ties: ${tieScore}`;
+    results.innerHTML = '';
+
+    results.append(choices, result, score, `Round: ${round}`);
+
+}
+}
 playGame()

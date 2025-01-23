@@ -1,0 +1,17 @@
+[33mcommit 24c6d824a85f8e8c34cdfa4a2ff1f20ce2de8ca4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/rps-ui[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mrps-ui[m[33m, [m[1;32mRPSRevisted[m[33m)[m
+Author: eidolon3 <samire2367@gmail.com>
+Date:   Tue Dec 17 13:23:26 2024 -0600
+
+    Added Tie Count, fixed some bugs
+
+[33mcommit 9fca164150bfc9415b6cd43033106633d2c89337[m
+Author: eidolon3 <samire2367@gmail.com>
+Date:   Tue Dec 17 13:18:43 2024 -0600
+
+    Code Added
+
+[33mcommit ce4ea2d87e77889244e4e99cc4d0ea1039f67910[m
+Author: eidolon3 <samire2367@gmail.com>
+Date:   Tue Dec 17 12:54:59 2024 -0600
+
+    Add Initial Files
